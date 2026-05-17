@@ -20,7 +20,6 @@ CREATE TABLE `users` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` TIMESTAMP NULL,
-  INDEX `email` (`email`),
   INDEX `role` (`role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -316,7 +315,7 @@ INSERT INTO `brands` (`name`, `slug`, `status`) VALUES
 
 -- Insert Products
 INSERT INTO `products` (`sku`, `name`, `slug`, `category_id`, `brand_id`, `description`, `purchase_price`, `sale_price`, `discount`, `stock_quantity`, `low_stock_alert`, `status`, `meta_title`, `meta_description`) VALUES
-('SKU000001', 'Samsung 55" Smart TV', 'samsung-55-smart-tv', 1, 1, 'High quality 55 inch smart television with 4K resolution', 35000.00, 45000.00, 10, 50, 5, 'active', 'Samsung 55 Smart TV', 'Buy Samsung 55 inch smart TV'),
+('SKU000001', 'Samsung 55" Smart TV', 'samsung-55-smart-tv', 1, 1, 'High quality 55 inch smart television with 4K resolution', 35000.00, 45000.00, 10, 50, 5, 'active', 'Samsung 55 Smart TV', 'Buy Samsung 55 Smart TV'),
 ('SKU000002', 'iPhone 14 Pro', 'iphone-14-pro', 1, 2, 'Latest iPhone 14 Pro with A16 Bionic chip', 120000.00, 155000.00, 5, 30, 5, 'active', 'iPhone 14 Pro', 'Buy iPhone 14 Pro Online'),
 ('SKU000003', 'Sony Headphones', 'sony-headphones', 1, 3, 'High quality wireless Sony headphones', 8000.00, 12000.00, 15, 100, 10, 'active', 'Sony Wireless Headphones', 'Premium Sony Headphones'),
 ('SKU000004', 'Winter Jacket', 'winter-jacket', 2, NULL, 'Warm and comfortable winter jacket', 3000.00, 5000.00, 0, 200, 20, 'active', 'Winter Jacket', 'Buy winter jacket online'),
