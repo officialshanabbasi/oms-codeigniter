@@ -36,7 +36,6 @@ CREATE TABLE `categories` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` TIMESTAMP NULL,
-  INDEX `slug` (`slug`),
   INDEX `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -52,7 +51,6 @@ CREATE TABLE `brands` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted_at` TIMESTAMP NULL,
-  INDEX `slug` (`slug`),
   INDEX `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -83,8 +81,6 @@ CREATE TABLE `products` (
   `deleted_at` TIMESTAMP NULL,
   FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE RESTRICT,
   FOREIGN KEY (`brand_id`) REFERENCES `brands`(`id`) ON DELETE SET NULL,
-  INDEX `slug` (`slug`),
-  INDEX `sku` (`sku`),
   INDEX `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -314,15 +310,15 @@ INSERT INTO `brands` (`name`, `slug`, `status`) VALUES
 ('HP', 'hp', 'active');
 
 -- Insert Products
-INSERT INTO `products` (`sku`, `name`, `slug`, `category_id`, `brand_id`, `description`, `purchase_price`, `sale_price`, `discount`, `stock_quantity`, `low_stock_alert`, `status`, `meta_title`, `meta_description`) VALUES
-('SKU000001', 'Samsung 55" Smart TV', 'samsung-55-smart-tv', 1, 1, 'High quality 55 inch smart television with 4K resolution', 35000.00, 45000.00, 10, 50, 5, 'active', 'Samsung 55 Smart TV', 'Buy Samsung 55 Smart TV'),
-('SKU000002', 'iPhone 14 Pro', 'iphone-14-pro', 1, 2, 'Latest iPhone 14 Pro with A16 Bionic chip', 120000.00, 155000.00, 5, 30, 5, 'active', 'iPhone 14 Pro', 'Buy iPhone 14 Pro Online'),
-('SKU000003', 'Sony Headphones', 'sony-headphones', 1, 3, 'High quality wireless Sony headphones', 8000.00, 12000.00, 15, 100, 10, 'active', 'Sony Wireless Headphones', 'Premium Sony Headphones'),
-('SKU000004', 'Winter Jacket', 'winter-jacket', 2, NULL, 'Warm and comfortable winter jacket', 3000.00, 5000.00, 0, 200, 20, 'active', 'Winter Jacket', 'Buy winter jacket online'),
-('SKU000005', 'Cotton T-Shirt', 'cotton-t-shirt', 2, NULL, 'High quality cotton t-shirt', 500.00, 999.00, 0, 500, 50, 'active', 'Cotton T-Shirt', 'Comfortable cotton t-shirt'),
-('SKU000006', 'Bed Sheet Set', 'bed-sheet-set', 3, NULL, 'Premium bed sheet set for comfort', 2000.00, 3500.00, 0, 75, 10, 'active', 'Bed Sheet Set', 'Quality bed sheet set'),
-('SKU000007', 'Sports Ball', 'sports-ball', 4, NULL, 'Professional sports ball', 1000.00, 1500.00, 0, 150, 20, 'active', 'Sports Ball', 'Professional sports ball'),
-('SKU000008', 'Self Help Book', 'self-help-book', 5, NULL, 'Motivational self help book', 800.00, 1200.00, 0, 80, 10, 'active', 'Self Help Book', 'Popular self help book');
+INSERT INTO `products` (`sku`, `name`, `slug`, `category_id`, `brand_id`, `description`, `purchase_price`, `sale_price`, `discount`, `stock_quantity`, `low_stock_alert`, `status`, `meta_title`, `meta_description`, `meta_keywords`) VALUES
+('SKU000001', 'Samsung 55" Smart TV', 'samsung-55-smart-tv', 1, 1, 'High quality 55 inch smart television with 4K resolution', 35000.00, 45000.00, 10, 50, 5, 'active', 'Samsung 55 Smart TV', 'Buy Samsung 55 inch Smart TV online', 'Samsung TV, 4K TV'),
+('SKU000002', 'iPhone 14 Pro', 'iphone-14-pro', 1, 2, 'Latest iPhone 14 Pro with A16 Bionic chip', 120000.00, 155000.00, 5, 30, 5, 'active', 'iPhone 14 Pro', 'Buy iPhone 14 Pro Online', 'Apple, iPhone 14'),
+('SKU000003', 'Sony Headphones', 'sony-headphones', 1, 3, 'High quality wireless Sony headphones', 8000.00, 12000.00, 15, 100, 10, 'active', 'Sony Wireless Headphones', 'Premium Sony Headphones', 'Sony, Headphones'),
+('SKU000004', 'Winter Jacket', 'winter-jacket', 2, NULL, 'Warm and comfortable winter jacket', 3000.00, 5000.00, 0, 200, 20, 'active', 'Winter Jacket', 'Buy winter jacket online', 'Jacket, Winter'),
+('SKU000005', 'Cotton T-Shirt', 'cotton-t-shirt', 2, NULL, 'High quality cotton t-shirt', 500.00, 999.00, 0, 500, 50, 'active', 'Cotton T-Shirt', 'Comfortable cotton t-shirt', 'T-Shirt, Cotton'),
+('SKU000006', 'Bed Sheet Set', 'bed-sheet-set', 3, NULL, 'Premium bed sheet set for comfort', 2000.00, 3500.00, 0, 75, 10, 'active', 'Bed Sheet Set', 'Quality bed sheet set', 'Bedding, Sheets'),
+('SKU000007', 'Sports Ball', 'sports-ball', 4, NULL, 'Professional sports ball', 1000.00, 1500.00, 0, 150, 20, 'active', 'Sports Ball', 'Professional sports ball', 'Sports, Ball'),
+('SKU000008', 'Self Help Book', 'self-help-book', 5, NULL, 'Motivational self help book', 800.00, 1200.00, 0, 80, 10, 'active', 'Self Help Book', 'Popular self help book', 'Books, Self Help');
 
 -- Insert Customers
 INSERT INTO `customers` (`name`, `email`, `phone`, `city`, `address`, `status`) VALUES
